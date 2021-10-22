@@ -1,0 +1,9 @@
+*/obj/
+*/bin/
+*/appsettings.json
+*/.vs
+
+.fake
+.ionide
+*.vs
+*.json
