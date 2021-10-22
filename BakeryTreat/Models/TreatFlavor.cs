@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
 namespace BakeryTreat.Models
 {
   public class TreatFlavor

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BakeryTreat.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,19 +45,6 @@ namespace BakeryTreat.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Treats",
-                columns: table => new
-                {
-                    TreatId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    TreatType = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Treats", x => x.TreatId);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,6 +174,26 @@ namespace BakeryTreat.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Treats",
+                columns: table => new
+                {
+                    TreatId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true),
+                    TreatType = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Treats", x => x.TreatId);
+                    table.ForeignKey(
+                        name: "FK_Treats_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TreatFlavor",
                 columns: table => new
                 {
@@ -263,6 +270,11 @@ namespace BakeryTreat.Migrations
                 name: "IX_TreatFlavor_TreatId",
                 table: "TreatFlavor",
                 column: "TreatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Treats_UserId",
+                table: "Treats",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

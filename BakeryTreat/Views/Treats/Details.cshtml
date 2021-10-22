@@ -2,13 +2,24 @@
   Layout = "_Layout";
 }
 
-@model BakeryTreat.Models.Treat
+@model BakeryTreat.Models.Treat;
 
-<h2>Are you sure you want to delete this?</h2>
+<h3>Here are some flavors for your treat! </h3>
+<hr/>
+<h4>@Html.DisplayNameFor(model => model.TreatType): @Html.DisplayFor(model => model.TreatType)</h3>
 
-@Html.DisplayNameFor(model => model.TreatType): @Html.DisplayFor(model => model.TreatType)
-@using (Html.BeginForm())
+@if(@Model.Flavors.Count == 0)
 {
-    <input type="submit" value="Delete" />
+  <p>Sorry, no flavors! Pick somthing else @Html.ActionLink("here", "Index", "Treats") </p>
 }
-@Html.ActionLink("Back to Treat", "Index")
+else 
+{
+  <h4>Flavors for this model.TreatType include:</h4>
+  
+  @foreach(var join in Model.Flavors)
+  {
+    <ul>@join.Flavor.FlavorType</ul>
+  }
+}
+@Html.ActionLink("Edit your treat", "Edit", new { id = Model.TreatId })
+@Html.ActionLink("Delete your treat", "Delete", new { id = Model.TreatId })

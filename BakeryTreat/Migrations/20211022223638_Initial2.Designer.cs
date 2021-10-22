@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakeryTreat.Migrations
 {
     [DbContext(typeof(BakeryTreatContext))]
-    [Migration("20211022164609_Initial")]
-    partial class Initial
+    [Migration("20211022223638_Initial2")]
+    partial class Initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,7 +111,12 @@ namespace BakeryTreat.Migrations
                     b.Property<string>("TreatType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -266,6 +271,15 @@ namespace BakeryTreat.Migrations
                 });
 
             modelBuilder.Entity("BakeryTreat.Models.Flavor", b =>
+                {
+                    b.HasOne("BakeryTreat.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BakeryTreat.Models.Treat", b =>
                 {
                     b.HasOne("BakeryTreat.Models.ApplicationUser", "User")
                         .WithMany()

@@ -109,7 +109,12 @@ namespace BakeryTreat.Migrations
                     b.Property<string>("TreatType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -264,6 +269,15 @@ namespace BakeryTreat.Migrations
                 });
 
             modelBuilder.Entity("BakeryTreat.Models.Flavor", b =>
+                {
+                    b.HasOne("BakeryTreat.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BakeryTreat.Models.Treat", b =>
                 {
                     b.HasOne("BakeryTreat.Models.ApplicationUser", "User")
                         .WithMany()

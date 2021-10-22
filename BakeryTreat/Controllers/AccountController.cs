@@ -13,11 +13,12 @@ namespace BakeryTreat.Controllers
     private readonly SignInManager<ApplicationUser> _signInManager;
 
     public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BakeryTreatContext db)
-    {
+     {
       _userManager = userManager;
       _signInManager = signInManager;
       _db = db;
     }
+
     public ActionResult Index()
     {
       return View();
@@ -27,10 +28,11 @@ namespace BakeryTreat.Controllers
     {
       return View();
     }
+
     [HttpPost]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
-      var user = new ApplicationUser { UserName = model.Email };
+      var user = new ApplicationUser { UserName = model.UserName };
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
@@ -41,14 +43,16 @@ namespace BakeryTreat.Controllers
         return View();
       }
     }
+
     public ActionResult Login()
     {
       return View();
     }
+
     [HttpPost]
     public async Task<ActionResult> Login(LoginViewModel model)
     {
-      Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+      Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
       if (result.Succeeded)
       {
         return RedirectToAction("Index");
@@ -58,8 +62,9 @@ namespace BakeryTreat.Controllers
         return View();
       }
     }
+
     [HttpPost]
-    public async Task<ActionResult> LogOff()
+    public async Task<ActionResult> Logoff()
     {
       await _signInManager.SignOutAsync();
       return RedirectToAction("Index");
