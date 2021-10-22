@@ -41,7 +41,7 @@ namespace BakeryTreat
       app.UseDeveloperExceptionPage();
 
       //new code
-      app.UseAuthentication(); 
+      app.UseAuthentication();
 
       app.UseRouting();
 
