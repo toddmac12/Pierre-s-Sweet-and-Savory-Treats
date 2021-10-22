@@ -1,10 +1,10 @@
-# Dr. Sillystringz's Factory
+# Pierre's Sweet and Savory Treats
 
 ## By Anthony McRae
 
 ## Description
 
-MVC web application to keep track of a factory's machine repairs,engineers, and the engineers that are licensed to fix each machine.
+MVC web application  where a user is able to log in and log out. Logged users can create, update bakery items. All users have read only access to view bakery items.
 
 ## Technologies Used
 
@@ -31,15 +31,15 @@ MVC web application to keep track of a factory's machine repairs,engineers, and 
 
 ## Installation Requirements
 
-1. Clone this repository in your preferred directory using `https://github.com/toddmac12/Dr.-Sillystringz-s-Factory.git`
-2. Navigate to the `\Factory` directory
+1. Clone this repository in your preferred directory using `https://github.com/toddmac12/Pierre-s-Sweet-and-Savory-Treats`
+2. Navigate to the `\BakeryTreat` directory
 3. Open with your preferred text editor to view the code base
 
 * To run the program enter the following commands using the Terminal.
 
-4.Navigate to the `\Factory` directory
+4.Navigate to the `\BakeryTreat` directory
 5. Create a copy of the database by using the `anthony_mcrae.sql` file included in the repo using MySQL Workbench program.
-6. Create an `appsettings.json` file in the `\Factory` directory add the following code to the file:
+6. Create an `appsettings.json` file in the `\BakeryTreat` directory add the following code to the file:
 
 ```{
  "ConnectionStrings":
