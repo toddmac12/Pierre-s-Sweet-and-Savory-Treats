@@ -14,7 +14,7 @@ namespace BakeryTreat.Controllers
 {
   public class TreatsController : Controller
   {
-    private readonly BakeryTreatContext _db; 
+    private readonly BakeryTreatContext _db;
 
     public TreatsController(BakeryTreatContext db)
     {
@@ -44,7 +44,7 @@ namespace BakeryTreat.Controllers
         .FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
-    // [Authorize]
+   
     public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
@@ -57,7 +57,7 @@ namespace BakeryTreat.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    // [Authorize]
+    
     public ActionResult Delete(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);

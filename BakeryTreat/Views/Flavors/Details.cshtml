@@ -8,7 +8,7 @@
 <hr />
 <h3>@Html.DisplayNameFor(model => model.FlavorType): @Html.DisplayFor(model => model.FlavorType)</h3>
 
-@if(@Model.Treats.Count == 0)
+@if (@Model.Treats.Count == 0)
 {
   <p>This Flavor does not belong to any Treats</p>
 }
@@ -16,15 +16,15 @@ else
 {
   <h4>Treats the Flavor belongs to:</h4>
   <ul>
-  @foreach(var join in Model.Treats)
-  {
-    <li>@join.Treat.TreatType</li>
-    @using (Html.BeginForm("DeleteTreat", "Flavors"))
+    @foreach (var join in Model.Treats)
     {
-      @Html.Hidden("joinId", @join.TreatFlavorId)
-      <input type="submit" value="Delete"/>
+      <li>@join.Treat.TreatType</li>
+      @using (Html.BeginForm("DeleteTreat", "Flavors"))
+      {
+        @Html.Hidden("joinId", @join.TreatFlavorId)
+        <input type="submit" value="Delete" />
+      }
     }
-  }
   </ul>
 }
 

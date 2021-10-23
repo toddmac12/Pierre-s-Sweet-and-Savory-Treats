@@ -10,11 +10,11 @@
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.TreatId)
+  @Html.HiddenFor(model => model.TreatId)
 
-    @Html.LabelFor(model => model.TreatType)
-    @Html.EditorFor(model => model.TreatType)
+  @Html.LabelFor(model => model.TreatType)
+  @Html.EditorFor(model => model.TreatType)
 
-    <input type="submit" value="submit" />
+  <input type="submit" value="submit" />
 }
 <p>@Html.ActionLink("Back to treats", "Index")</p>

@@ -4,9 +4,9 @@ namespace BakeryTreat.ViewModels
 {
   public class RegisterViewModel
   {
-     
-    [Required(ErrorMessage ="Must be between 5 and 20 characters.")]
-    [StringLength(20, MinimumLength=5)]
+
+    [Required(ErrorMessage = "Must be between 5 and 20 characters.")]
+    [StringLength(20, MinimumLength = 5)]
     [Display(Name = "User Name")]
     public string UserName { get; set; }
 
@@ -15,7 +15,7 @@ namespace BakeryTreat.ViewModels
     [Display(Name = "Email")]
     public string Email { get; set; }
 
-    [Required(ErrorMessage ="Must be between 5 and 20 characters.")]
+    [Required(ErrorMessage = "Must be between 5 and 20 characters.")]
     [DataType(DataType.Password)]
     [Display(Name = "Password")]
     public string Password { get; set; }

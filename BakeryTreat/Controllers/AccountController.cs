@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Security.Claims;
 using BakeryTreat.Models;
 using System.Threading.Tasks;
 using BakeryTreat.ViewModels;
@@ -13,7 +15,7 @@ namespace BakeryTreat.Controllers
     private readonly SignInManager<ApplicationUser> _signInManager;
 
     public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BakeryTreatContext db)
-     {
+    {
       _userManager = userManager;
       _signInManager = signInManager;
       _db = db;

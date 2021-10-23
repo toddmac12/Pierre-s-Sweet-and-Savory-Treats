@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BakeryTreat.Models;
-//new code
 using Microsoft.AspNetCore.Identity;
 
 namespace BakeryTreat
